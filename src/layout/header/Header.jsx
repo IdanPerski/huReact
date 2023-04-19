@@ -1,11 +1,13 @@
-import React from "react";
-import Logo from "./topNavBar/logo/Logo";
+import { Button } from "@mui/material";
+import Menu from "./topNavBar/menu class/menu/Menu";
+import { useMenu } from "./topNavBar/menu class/menu/MenuProvider";
+
+import NavBar from "./topNavBar/NavBar";
 
 export default function Header() {
   return (
-    <div>
-      Header
-      <Logo />
-    </div>
+    <>
+      <NavBar />
+    </>
   );
 }

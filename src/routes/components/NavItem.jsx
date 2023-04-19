@@ -1,5 +1,24 @@
+import { Button, Typography } from "@mui/material";
+import { node, object, string } from "prop-types";
 import React from "react";
+import NavBarLink from "./NavBarLink";
 
-export default function NavItem() {
-  return <div></div>;
+export default function NavItem({ to, sx, label }) {
+  return (
+    <NavBarLink to={to} sx={sx}>
+      <Button color="inherit">
+        <Typography>{label}</Typography>
+      </Button>
+    </NavBarLink>
+  );
 }
+
+NavItem.propTypes = {
+  to: string.isRequired,
+  label: string.isRequired,
+  sx: object,
+};
+
+NavItem.defaultProps = {
+  sx: { color: "#000" },
+};

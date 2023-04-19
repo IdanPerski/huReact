@@ -11,7 +11,7 @@ export default function Logo() {
         <Typography
           variant="h4"
           sx={{
-            display: { xs: "none", md: "inline-flex" },
+            display: "inline-flex",
             marginRight: 2,
             fontFamily: "fantasy",
           }}
