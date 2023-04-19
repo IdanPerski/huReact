@@ -28,12 +28,20 @@ export default function ThemeProvider({ children }) {
 
   const value = useMemo(
     () => ({ isDark, toggleDarkMode }),
+<<<<<<< HEAD
     [isDark, toggleDarkMode],
+=======
+    [isDark, toggleDarkMode]
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
   );
 
   return (
     <MuiThemeProvider theme={theme}>
+<<<<<<< HEAD
       <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+=======
+      <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
     </MuiThemeProvider>
   );
 }

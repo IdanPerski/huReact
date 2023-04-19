@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect } from "react";
+<<<<<<< HEAD
 import { useSnack } from "../providers/SnackBarProvider";
 import { useUser } from "../user/providers/UseProvider";
 
@@ -59,6 +60,8 @@ export default function useAxios() {
 /* 
 import axios from "axios";
 import { useEffect } from "react";
+=======
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
 import { useSnack } from "../providers/SnackbarProvider";
 import { useUser } from "./../users/providers/UserProvider";
 export default function useAxios() {
@@ -68,7 +71,10 @@ export default function useAxios() {
   useEffect(() => {
     axios.defaults.headers.common["x-auth-token"] = token;
     console.log("out");
+<<<<<<< HEAD
 
+=======
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
     const requestInterceptor = axios.interceptors.request.use((data) => {
       console.log("in");
       return Promise.resolve(data);
@@ -88,5 +94,8 @@ export default function useAxios() {
     };
   }, [snack, token]);
 }
+<<<<<<< HEAD
 
 */
+=======
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15

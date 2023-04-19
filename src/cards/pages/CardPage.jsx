@@ -1,11 +1,20 @@
 import { Container } from "@mui/material";
+<<<<<<< HEAD
 import React, { useEffect } from "react";
 import PageHeader from "../../components/PageHeader";
 
+=======
+import React, { useEffect, useState } from "react";
+import PageHeader from "../../components/PageHeader";
+import Cards from "../components/Cards";
+import Spinner from "./../../components/Spinner";
+import Error from "./../../components/Error";
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
 import useCards from "../hooks/useCards";
 import CardsFeedback from "../components/CardsFeedback";
 
 export default function CardPage() {
+<<<<<<< HEAD
   //send requset to API
   // getCards();
   // setting states and taking action according to the resposnse from the API
@@ -17,6 +26,10 @@ export default function CardPage() {
   } = useCards();
 
   // const { cards, error, isLoading } = value;
+=======
+  const { value, handleGetCards, handleDeleteCard } = useCards();
+  const { cards, error, isLoading } = value;
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
 
   useEffect(() => {
     handleGetCards();
@@ -33,7 +46,10 @@ export default function CardPage() {
           title="Cards"
           subtitle="On this page you can find all bussines cards from all categories"
         />
+<<<<<<< HEAD
 
+=======
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
         <CardsFeedback
           isLoading={isLoading}
           error={error}

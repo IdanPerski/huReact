@@ -1,5 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+<<<<<<< HEAD
 import MyButton from "./MyButton.jsx";
+=======
+import MyButton from "./MyButton";
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
 
 export default function RenderComponent() {
   console.log("The components is rendered");
@@ -34,3 +38,8 @@ export default function RenderComponent() {
     </div>
   );
 }
+<<<<<<< HEAD
+=======
+
+//הפסקה עד 19:50
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15

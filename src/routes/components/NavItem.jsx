@@ -1,5 +1,9 @@
 import { Button, Typography } from "@mui/material";
+<<<<<<< HEAD
 import { node, object, string } from "prop-types";
+=======
+import { object, string } from "prop-types";
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
 import React from "react";
 import NavBarLink from "./NavBarLink";
 
@@ -18,7 +22,10 @@ NavItem.propTypes = {
   label: string.isRequired,
   sx: object,
 };
+<<<<<<< HEAD
 
 NavItem.defaultProps = {
   sx: { color: "#000" },
 };
+=======
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15

@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
+<<<<<<< HEAD
 import { useSnack } from "../../providers/SnackBarProvider";
 
 import useAxios from "../../hooks/useAxios";
@@ -161,6 +162,8 @@ export const getCards = () =>
 
 /* 
 import { useState } from "react";
+=======
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
 import useAxios from "../../hooks/useAxios";
 import { useSnack } from "../../providers/SnackbarProvider";
 import { useUser } from "../../users/providers/UserProvider";
@@ -190,7 +193,11 @@ export default function useCards() {
     setCard(card);
   };
 
+<<<<<<< HEAD
   const handleGetCards = async () => {
+=======
+  const handleGetCards = useCallback(async () => {
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
     try {
       setLoading(true);
       const cards = await getCards();
@@ -199,9 +206,15 @@ export default function useCards() {
     } catch (error) {
       requestStatus(false, error, null);
     }
+<<<<<<< HEAD
   };
 
   const handleGetMyCards = async () => {
+=======
+  }, []);
+
+  const handleGetMyCards = useCallback(async () => {
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
     try {
       setLoading(true);
       const cards = await getMyCards();
@@ -209,9 +222,15 @@ export default function useCards() {
     } catch (error) {
       requestStatus(false, error, null);
     }
+<<<<<<< HEAD
   };
 
   const handleDeleteCard = async (cardId) => {
+=======
+  }, []);
+
+  const handleDeleteCard = useCallback(async (cardId) => {
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
     try {
       setLoading(true);
       await deleteCard(cardId);
@@ -220,10 +239,17 @@ export default function useCards() {
       setLoading(false);
       setError(error);
     }
+<<<<<<< HEAD
   };
 
   //handleGetCard
   const handleGetCard = async (cardId) => {
+=======
+  }, []);
+
+  //handleGetCard
+  const handleGetCard = useCallback(async (cardId) => {
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
     try {
       setLoading(true);
       const card = await getCard(cardId);
@@ -232,10 +258,17 @@ export default function useCards() {
     } catch (error) {
       requestStatus(false, error, null);
     }
+<<<<<<< HEAD
   };
 
   //handleUpdateCard
   const handleUpdateCard = async (cardId, cardFromClient) => {
+=======
+  }, []);
+
+  //handleUpdateCard
+  const handleUpdateCard = useCallback(async (cardId, cardFromClient) => {
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
     try {
       setLoading(true);
       const card = await editCard(cardId, cardFromClient);
@@ -244,10 +277,17 @@ export default function useCards() {
     } catch (error) {
       requestStatus(false, error, null);
     }
+<<<<<<< HEAD
   };
 
   //handleLikeCard
   const handleLikeCard = async (cardId) => {
+=======
+  }, []);
+
+  //handleLikeCard
+  const handleLikeCard = useCallback(async (cardId) => {
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
     try {
       const card = await changeLikeStatus(cardId);
       requestStatus(false, null, cards, card);
@@ -255,9 +295,15 @@ export default function useCards() {
     } catch (error) {
       requestStatus(false, error, null);
     }
+<<<<<<< HEAD
   };
   //handleGetFavCards
   const handleGetFavCards = async () => {
+=======
+  }, []);
+  //handleGetFavCards
+  const handleGetFavCards = useCallback(async () => {
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
     try {
       setLoading(true);
       const cards = await getCards();
@@ -266,10 +312,17 @@ export default function useCards() {
     } catch (error) {
       requestStatus(false, error, null);
     }
+<<<<<<< HEAD
   };
 
   //handleCreateCard
   const handleCreateCard = async (cardFromClient) => {
+=======
+  }, []);
+
+  //handleCreateCard
+  const handleCreateCard = useCallback(async (cardFromClient) => {
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
     try {
       setLoading(true);
       const card = await createCard(cardFromClient);
@@ -278,6 +331,7 @@ export default function useCards() {
     } catch (error) {
       requestStatus(false, error, null);
     }
+<<<<<<< HEAD
   };
 
   return {
@@ -285,6 +339,16 @@ export default function useCards() {
     cards,
     isLoading,
     error,
+=======
+  }, []);
+
+  const value = useMemo(() => {
+    return { isLoading, cards, card, error };
+  }, [isLoading, cards, card, error]);
+
+  return {
+    value,
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
     handleGetCards,
     handleGetMyCards,
     handleDeleteCard,
@@ -295,5 +359,8 @@ export default function useCards() {
     handleLikeCard,
   };
 }
+<<<<<<< HEAD
 
 */
+=======
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15

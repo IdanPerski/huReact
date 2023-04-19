@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect } from "react";
 import Container from "@mui/material/Container";
 import { Navigate, useParams } from "react-router-dom";
@@ -62,6 +63,8 @@ export default function EditCardPage() {
 /* 
 
 
+=======
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
 import { Container } from "@mui/material";
 import React, { useEffect } from "react";
 import { Navigate, useParams } from "react-router-dom";
@@ -80,7 +83,16 @@ export default function EditCardPage() {
   //id of the card - useParams
   const { id } = useParams();
   //handleUpdateCard & handleGetCard & card - useCards
+<<<<<<< HEAD
   const { handleUpdateCard, handleGetCard, card } = useCards();
+=======
+  const {
+    handleUpdateCard,
+    handleGetCard,
+    value: { card },
+  } = useCards();
+
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
   //user - useUser (provider)
   const { user } = useUser();
   //useForm (initialForm,schema,onSubmit)
@@ -120,4 +132,8 @@ export default function EditCardPage() {
       />
     </Container>
   );
+<<<<<<< HEAD
 }*/
+=======
+}
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15

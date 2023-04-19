@@ -1,5 +1,6 @@
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
+<<<<<<< HEAD
 import { IconButton, useMediaQuery } from "@mui/material";
 import React from "react";
 import { useTheme } from "../../../../providers/ThemeProvider";
@@ -20,6 +21,19 @@ export default function RightNavBar() {
   const { isDark, toggleDarkMode } = useTheme();
   const { user } = useUser();
 
+=======
+import { Box, IconButton } from "@mui/material";
+import React from "react";
+import { useTheme } from "../../../../providers/ThemeProvider";
+import { useUser } from "../../../../users/providers/UserProvider";
+import Logged from "./Logged";
+import MoreButton from "./MoreButton";
+import NotLogged from "./NotLogged";
+
+export default function RightNavBar() {
+  const { isDark, toggleDarkMode } = useTheme();
+  const { user } = useUser();
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
   return (
     <>
       <Box

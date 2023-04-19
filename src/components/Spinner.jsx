@@ -4,6 +4,10 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
 const Spinner = ({ color, size, height }) => {
+<<<<<<< HEAD
+=======
+  console.log("SPINNER");
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
   return (
     <Box
       sx={{

@@ -19,3 +19,8 @@ NavBarLink.propTypes = {
 NavBarLink.defaultProps = {
   sx: { color: "#000" },
 };
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
