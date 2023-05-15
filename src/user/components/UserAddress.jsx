@@ -25,38 +25,55 @@ const UserAddress = ({
       to={ROUTES.CARDS}
     >
       <Input
-        name="country"
-        label="country"
-        error={errors.first}
+        name="state"
+        label="state"
+        error={errors.state}
         onChange={onInputChange}
         data={data}
-        md={6}
+        sm={6}
+        required={false}
       />
-
+      <Input
+        label="country"
+        name="country"
+        error={errors.country}
+        onChange={onInputChange}
+        data={data}
+        sm={6}
+      />
       <Input
         name="city"
         label="city"
-        error={errors.last}
+        error={errors.city}
         onChange={onInputChange}
         data={data}
-        md={6}
+        sm={6}
       />
-
       <Input
         name="street"
-        label="Street"
-        error={errors.password}
+        label="street"
+        error={errors.street}
         onChange={onInputChange}
         data={data}
-        md={6}
+        sm={6}
       />
       <Input
         name="houseNumber"
-        label="House Number"
-        error={errors.password}
+        label="house Number"
+        type="number"
+        error={errors.houseNumber}
         onChange={onInputChange}
         data={data}
-        md={6}
+        sm={6}
+      />
+      <Input
+        name="zip"
+        label="zip"
+        error={errors.zip}
+        onChange={onInputChange}
+        data={data}
+        sm={6}
+        required={false}
       />
 
       <Grid item></Grid>

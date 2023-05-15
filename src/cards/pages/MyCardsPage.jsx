@@ -47,34 +47,3 @@ export default function MyCardsPage() {
     </div>
   );
 }
-
-/* class */
-
-/* 
-import { Container } from "@mui/material";
-import React, { useEffect } from "react";
-import PageHeader from "../../components/PageHeader";
-import CardsFeedback from "../components/CardsFeedback";
-import useCards from "../hooks/useCards";
-
-export default function MyCards() {
-  const { cards, isLoading, error, handleGetCards } = useCards();
-
-  useEffect(() => {
-    handleGetCards();
-  }, []);
-
-  return (
-    <div>
-      <Container sx={{ mt: 2 }}>
-        <PageHeader
-          title="Cards"
-          subtitle="On this page you can find all bussines cards from all categories"
-        />
-        <CardsFeedback isLoading={isLoading} error={error} cards={cards} />
-      </Container>
-    </div>
-  );
-}
-
-*/

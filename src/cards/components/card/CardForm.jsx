@@ -1,7 +1,5 @@
 import React from "react";
 import { func, object, string } from "prop-types";
-// import Form from "../../forms/components/Form";
-// import Input from "../../forms/components/Input";
 import Form from "../../../forms/components/Form";
 import Input from "../../../forms/components/Input";
 

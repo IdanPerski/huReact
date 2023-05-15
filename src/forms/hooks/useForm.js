@@ -18,16 +18,13 @@ const useForm = (initialForm, schema, handleSubmit) => {
       const { error } = generateSchema.validate(obj);
       return error ? error.details[0].message : null;
     },
-<<<<<<< HEAD
     [schema],
-=======
-    [schema]
->>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
   );
 
   const handleChange = useCallback(
     ({ target }) => {
       const { name, value } = target;
+
       const errorMessage = validateProperty(target);
       if (errorMessage)
         setErrors((prev) => ({ ...prev, [name]: errorMessage }));
@@ -40,11 +37,7 @@ const useForm = (initialForm, schema, handleSubmit) => {
 
       setData((prev) => ({ ...prev, [name]: value }));
     },
-<<<<<<< HEAD
     [validateProperty],
-=======
-    [validateProperty]
->>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
   );
 
   const validateForm = useCallback(() => {

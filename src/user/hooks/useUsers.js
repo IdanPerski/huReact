@@ -1,6 +1,6 @@
 import { useState, useCallback, useMemo } from "react";
 
-import { login, signup } from "../services/usersApiService";
+import { editUser, login, signup } from "../services/usersApiService";
 import {
   getUser,
   removeToken,
@@ -11,6 +11,7 @@ import ROUTES from "../../routes/routesModel";
 import { useUser } from "../providers/UseProvider";
 import useAxios from "../../hooks/useAxios";
 import normalizeUser from "../helpers/normalization/normalizeUser";
+import { editCard } from "../../cards/services/cardApiService";
 
 const useUsers = () => {
   const [isLoading, setLoading] = useState(true);
@@ -66,11 +67,30 @@ const useUsers = () => {
     },
     [requestStatus, handleLogin],
   );
+
+  //handleUpdateCard
+  const handleUpdateUser = useCallback(
+    async (user) => {
+      console.log("handleUpdateUser", user);
+      try {
+        // console.log("try");
+        setLoading(true);
+        const userNormalize = normalizeUser(user);
+        await editUser(user, userNormalize);
+        requestStatus(false, null, null, user);
+        // snack("success", "User has been successfully updated");
+      } catch (error) {
+        // requestStatus(false, error, null);
+        console.log(error);
+      }
+    },
+    [requestStatus, handleLogin],
+  );
   /*
  
 UPDATE USER
  
- const handleSignup = useCallback(
+ const handleUpdateUser = useCallback(
     async (userUpdate) => {
       try {
         const normalizedUser = normalizeUser(userUpdate);
@@ -88,10 +108,10 @@ UPDATE USER
 
 
     //handleUpdateCard
-  const handleUpdateCard = async (cardId, cardFromClient) => {
+  const handleUpdateUser = async (userId) => {
     try {
       setLoading(true);
-      const card = await editCard(cardId, cardFromClient);
+      const card = await editCard(cardId);
       requestStatus(false, null, null, card);
       snack("success", "The business card has been successfully updated");
     } catch (error) {
@@ -116,6 +136,7 @@ UPDATE USER
     handleLogin,
     handleLogout,
     handleSignup,
+    handleUpdateUser,
   };
 };
 

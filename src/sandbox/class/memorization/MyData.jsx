@@ -1,23 +1,20 @@
-import { Button, Typography } from "@mui/material";
-import React, { useMemo, useState } from "react";
+import { Button } from "@mui/material";
+import React, { useState } from "react";
+import Counter from "../../stateHook/Counter";
 import MySpecificData from "./MySpecificData";
 
 export default function MyData() {
-  const [counter, setCounter] = useState(0);
-
-  const memoObj = useMemo(() => {
-    return {
-      text: "HELLO",
-    };
-  }, []);
+  const [counter, setcounter] = useState(0);
 
   return (
     <div>
-      <Button onClick={() => setCounter((prev) => prev + 1)}>+</Button>
-      <Button onClick={() => setCounter((prev) => prev - 1)}>-</Button>
-      <Typography>{counter}</Typography>
-      <MySpecificData text="hello" data={memoObj} />
-      <MySpecificData text="bye" />
+      <MySpecificData text={"hello"} />
+      <MySpecificData text={"bye"} />
+
+      <Button onClick={() => setcounter((prev) => prev + 1)}>+</Button>
+      <Button onClick={() => setcounter((prev) => prev - 1)}>-</Button>
+
+      <MySpecificData text={counter} />
     </div>
   );
 }

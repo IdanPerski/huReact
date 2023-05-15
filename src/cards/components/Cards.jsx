@@ -1,24 +1,18 @@
-<<<<<<< HEAD
 import { Grid } from "@mui/material";
-=======
-import { Grid, Typography } from "@mui/material";
-import { arrayOf } from "prop-types";
->>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
 import React from "react";
 import cardType from "../models/types/cardType";
 import CardBussinesComponent from "./card/CardBussinesComponent";
+import { arrayOf } from "prop-types";
 
-export default function Cards({ cards, handleDelete }) {
+export default function Cards({ cards, handleDelete, onLike }) {
   const handleEdit = (id) => {
     console.log(`Card ${id} is Edited`);
   };
-  const handleLike = (id) => {
-    console.log(`Card ${id} is Liked`);
-  };
-<<<<<<< HEAD
 
-=======
->>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
+  // const handleLike = (id) => {
+  //   console.log(`Card ${id} is Liked`);
+  // };
+
   return (
     <>
       <Grid container spacing={2}>
@@ -29,7 +23,8 @@ export default function Cards({ cards, handleDelete }) {
               key={card._id}
               handleDelete={handleDelete}
               handleEdit={handleEdit}
-              handleLike={handleLike}
+              // handleLike={handleLike}
+              onLike={onLike}
             />
           </Grid>
         ))}

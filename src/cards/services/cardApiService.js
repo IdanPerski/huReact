@@ -1,5 +1,4 @@
 import axios from "axios";
-<<<<<<< HEAD
 
 const apiUrl = "http://localhost:8181";
 
@@ -9,20 +8,10 @@ export const getFromDatabase = async (getData, errorCatch) => {
     return data;
   } catch (error) {
     console.log(errorCatch);
-=======
-const apiUrl = "http://localhost:8181";
-export const getCards = async () => {
-  try {
-    const response = await axios.get(`${apiUrl}/cards`);
-    const data = response.data;
-    return data;
-  } catch (error) {
->>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
     return Promise.reject(error.message);
   }
 };
 
-<<<<<<< HEAD
 export const getCards = () =>
   getFromDatabase(
     () => axios.get(`${apiUrl}/cards`), // wrap axios.get in a function
@@ -56,7 +45,50 @@ export const getCard = (cardId) =>
     () => axios.get(`${apiUrl}/cards/${cardId}`),
     "getCard error",
   );
-=======
+// export const getSearchedCard = (cardId) =>
+//   getFromDatabase(
+//     () => axios.get(`${apiUrl}/cards/${cardId}`),
+//     "getSearchedCard error",
+//   );
+
+//_________for the searchBar___________________
+export const getSearchedCard = (cardIds) =>
+  getFromDatabase(
+    () => Promise.all(cardIds.map((id) => axios.get(`${apiUrl}/cards/${id}`))),
+    "getCards error",
+  );
+
+export const changeLikeStatus = async (cardId) => {
+  try {
+    const { data } = await axios.patch(`${apiUrl}/cards/${cardId}`);
+    return data;
+  } catch (error) {
+    return Promise.reject(error.message);
+  }
+};
+
+/////////short changeLikeStatus////////
+/*  export const changeLikeStatus = ((cardId) =>
+    getFromDatabase(
+      () => axios.patch(`${apiUrl}/cards/${cardId}`), // wrap axios.get in a function
+      "changeLikeStatus error",
+    ); */
+/* 
+
+///////////////////////////////////////////////
+
+
+//_________for the searchBar___________________
+export const getCards = (cardIds) =>
+  getFromDatabase(
+    () => Promise.all(cardIds.map(id => axios.get(`${apiUrl}/cards/${id}`))),
+    "getCards error",
+  );
+
+
+
+
+
 export const getMyCards = async () => {
   console.log("get my cards");
   try {
@@ -108,22 +140,7 @@ export const editCard = async (cardId, normalaizedCard) => {
 };
 >>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15
 
-export const changeLikeStatus = async (cardId) => {
-  try {
-    const { data } = await axios.patch(`${apiUrl}/cards/${cardId}`);
-    return data;
-  } catch (error) {
-    return Promise.reject(error.message);
-  }
-};
-<<<<<<< HEAD
 
-/////////short changeLikeStatus////////
-/*  export const changeLikeStatus = ((cardId) =>
-    getFromDatabase(
-      () => axios.patch(`${apiUrl}/cards/${cardId}`), // wrap axios.get in a function
-      "changeLikeStatus error",
-    ); */
 
 // export const getCard = async (cardId) => {
 //   try {
@@ -177,5 +194,3 @@ export const changeLikeStatus = async (cardId) => {
     return Promise.reject(error.message);
   }
 }; */
-=======
->>>>>>> 328f3c878f4e2bfcc007c639410a6ca9a3f14a15

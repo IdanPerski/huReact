@@ -1,12 +1,11 @@
+import { Typography } from "@mui/material";
 import React, { memo } from "react";
-import Typography from "@mui/material/Typography";
 
-export default memo(function MySpecificData({ text, data }) {
-  console.log("component " + text);
-
-  let result = text;
-  if (data) {
-    result = data.text;
-  }
-  return <Typography>{result}</Typography>;
+export default memo(function MySpecificData({ text }) {
+  console.log("my specific data rendered", `text =${text} `);
+  return (
+    <Typography variant="body1" color={"initial"}>
+      {text}
+    </Typography>
+  );
 });

@@ -1,6 +1,6 @@
 import { Card, CardActionArea } from "@mui/material";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CardHead from "./CardHead";
 import CardBody from "./CardBody";
 import CardActionBar from "./CardActionBar";
@@ -8,14 +8,17 @@ import cardType from "../../models/types/cardType";
 import { func } from "prop-types";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../../routes/routesModel";
+import useCards from "../../hooks/useCards";
+import { getUser } from "../../../user/services/localStorageService";
 
 export default function CardBussinesComponent({
   card,
   handleDelete,
   handleEdit,
-  handleLike,
+  onLike,
 }) {
   const navigate = useNavigate();
+
   return (
     <>
       <Card sx={{ width: 250, m: 2 }}>
@@ -36,8 +39,8 @@ export default function CardBussinesComponent({
           user_id={card.user_id}
           handleDelete={handleDelete}
           handleEdit={handleEdit}
-          handleLike={handleLike}
-          user_id={card.user_id}
+          onLike={onLike}
+          likes={card.likes}
         />
       </Card>
     </>
@@ -48,5 +51,5 @@ CardBussinesComponent.propTypes = {
   card: cardType.isRequired,
   handleDelete: func,
   handleEdit: func,
-  handleLike: func,
+  onLike: func,
 };

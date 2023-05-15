@@ -3,9 +3,9 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PageHeader from "../../components/PageHeader";
 import ROUTES from "../../routes/routesModel";
-import { useUser } from "../../users/providers/UserProvider";
 import CardsFeedback from "../components/CardsFeedback";
 import useCards from "../hooks/useCards";
+import { useUser } from "../../user/providers/UseProvider";
 
 export default function MyCards() {
   const { value, handleGetMyCards, handleDeleteCard } = useCards();
