@@ -13,6 +13,7 @@ import { useParams } from "react-router-dom";
 import PageHeader from "../../components/PageHeader";
 import useCards from "../hooks/useCards";
 import Map from "../../components/Map";
+import MapSandbox from "../.././sandbox/map/MapSandbox";
 
 export default function CardDetailsPage() {
   const { id } = useParams();
@@ -24,9 +25,7 @@ export default function CardDetailsPage() {
   const fetchData = async () => {
     try {
       await handleGetCard(id);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
@@ -41,6 +40,11 @@ export default function CardDetailsPage() {
       return address;
     }
   };
+
+  const capitalizeFirstLetter = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
   useEffect(() => {
     const displayCardDetails = (obj) => {
       const convertedObj = Object.entries(obj);
@@ -63,7 +67,6 @@ export default function CardDetailsPage() {
           marginY: "auto",
           display: "flex",
           flexDirection: "column",
-          
         }}
       >
         <Box width={"100%"} display="flex" flexDirection="column">
@@ -89,8 +92,8 @@ export default function CardDetailsPage() {
               Object.keys(cardDetails).map((key) => (
                 <ListItemText
                   key={key}
-                  primary={key}
-                  secondary={cardDetails[key]}
+                  primary={capitalizeFirstLetter(key)}
+                  secondary={capitalizeFirstLetter(cardDetails[key])}
                 />
               ))}
           </List>
@@ -111,10 +114,14 @@ export default function CardDetailsPage() {
         >
           {card ? (
             <Map
+              country={address().country}
+              address={`${address().city} ${address().street} ${
+                address().houseNumber
+              }`}
 
-            // address={`${address().country},${address().city},${
-            //   address().street
-            // },${address().houseNumber}`}
+              // address={`${address().country},${address().city},${
+              //   address().street
+              // },${address().houseNumber}`}
             />
           ) : (
             <Typography>loading...</Typography>

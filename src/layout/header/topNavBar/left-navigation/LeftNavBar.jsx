@@ -5,14 +5,12 @@ import Logo from "../logo/Logo";
 import LogoIcon from "../logo/LogoIcon";
 import { useUser } from "../../../../user/providers/UseProvider";
 import { Box, useMediaQuery } from "@mui/material";
+import { useTheme } from "../../../../providers/ThemeProvider";
 
 export default function LeftNavBar() {
   const { user } = useUser();
-  // const isSmall = useMediaQuery((theme) =>
-  //   theme.breakpoints.between("xs", "md"),
-  // );
+  const { isDark } = useTheme;
   const isMedium = useMediaQuery((theme) => theme.breakpoints.up("md"));
-  // const isLarge = useMediaQuery((theme) => theme.breakpoints.up("lg"));
 
   return (
     <>
@@ -20,13 +18,14 @@ export default function LeftNavBar() {
         sx={{
           display: "inline-flex",
           alignItems: "center",
+          color: isDark ? "white" : "black",
         }}
       >
         <LogoIcon />
         {isMedium && <Logo />}
 
         {isMedium && (
-          <Box sx={{ display: "flex" }}>
+          <Box sx={{ display: "flex", color: isDark ? "white" : "black" }}>
             <NavItem to={ROUTES.CARDS} label="Cards" />
             <NavItem to={ROUTES.ABOUT} label="About" />
             {user && <NavItem to={ROUTES.FAV_CARDS} label="Favorite cards" />}

@@ -3,12 +3,12 @@ import React, { useCallback, useContext, useEffect } from "react";
 import PageHeader from "../../components/PageHeader";
 import useCards from "../hooks/useCards";
 import CardsFeedback from "../components/CardsFeedback";
-import { SearchContext } from "../../providers/SearchProvider";
+// import { SearchContext } from "../../providers/SearchProvider";
 
 export default function CardPage() {
-  const { search, renderNoResult } = useContext(SearchContext);
+  // const { search, renderNoResult } = useContext(SearchContext);
   const {
-    value: { cards, error, isLoading },
+    value: { cards, error, isLoading, filterCards },
     handleGetCards,
     handleDeleteCard,
   } = useCards();
@@ -30,18 +30,10 @@ export default function CardPage() {
           title="Cards"
           subtitle="On this page you can find all bussines cards from all categories"
         />
-
-        {useEffect(() => {
-          if (renderNoResult) {
-            <Typography variant="h5" color={"error"}>
-              No results for your search!
-            </Typography>;
-          }
-        }, [search])}
         <CardsFeedback
           isLoading={isLoading}
           error={error}
-          cards={search.length == 0 ? cards : search}
+          cards={filterCards}
           handleDelete={handleDelete}
         />
       </Container>

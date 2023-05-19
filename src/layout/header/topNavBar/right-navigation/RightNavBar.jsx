@@ -8,18 +8,20 @@ import NotLogged from "./NotLogged";
 import Logged from "./Logged";
 import { useUser } from "../../../../user/providers/UseProvider";
 import MoreButton from "./MoreButton";
+import MySearchBar from "./MySearchBar";
 import SearchBar from "./SearchBar";
 
 export default function RightNavBar() {
   const isMedium = useMediaQuery((theme) => theme.breakpoints.down("lg"));
-  const [searchQuery, setSearchQuery] = useState("");
+  // const [searchQuery, setSearchQuery] = useState("");
   const { isDark, toggleDarkMode } = useTheme();
   const { user } = useUser();
 
   return (
     <>
       <Box display={"inline-flex"}>
-        <SearchBar searchQuery={searchQuery} onSearch={setSearchQuery} />
+        {/* <MySearchBar searchQuery={searchQuery} onSearch={setSearchQuery} /> */}
+        <SearchBar />
         <Box
           sx={{
             display: { xs: "none", md: "inline-flex" },

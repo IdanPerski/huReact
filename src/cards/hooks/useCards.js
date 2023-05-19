@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useSnack } from "../../providers/SnackBarProvider";
 
 import useAxios from "../../hooks/useAxios";
@@ -12,6 +12,7 @@ import {
   getCards,
   getMyCards,
 } from "../services/cardApiService";
+import { useSearchParams } from "react-router-dom";
 export default function useCards() {
   const [cards, setCards] = useState([]);
   const [isLoading, setLoading] = useState(false);
@@ -19,6 +20,22 @@ export default function useCards() {
   const snack = useSnack();
   const [card, setCard] = useState(null);
   const { user } = useUser();
+  const [query, setQuery] = useState("");
+  const [searchParams] = useSearchParams();
+  const [filterCards, setFilter] = useState();
+
+  useEffect(() => setQuery(searchParams.get("q") ?? ""), [searchParams]);
+  useEffect(() => {
+    if (cards) {
+      setFilter(
+        cards.filter(
+          (card) =>
+            card.title.includes(query) ||
+            String(card.bizNumber).includes(query),
+        ),
+      );
+    }
+  }, [cards, query]);
   useAxios();
 
   const requestStatus = (loading, errorMessage, cards, card = null) => {
@@ -65,13 +82,12 @@ export default function useCards() {
     setLoading(true);
     try {
       const data = await getCard(cardId);
-      console.log(data);
+
       requestStatus(false, error, null, data);
       snack("success", "card uploaded succsesfuly!");
       return data;
     } catch (error) {
       requestStatus(false, error, null);
-   
     }
   }, []);
 
@@ -89,11 +105,10 @@ export default function useCards() {
 
   //handleCreateCard
   const handleCreateCard = useCallback(async (cardFromClient) => {
-    console.log("clicked");
     try {
       setLoading(true);
       const card = await createCard(cardFromClient);
-      console.log(card);
+
       requestStatus(false, null, null, card);
       snack("success", "A new business card has been created");
     } catch (error) {
@@ -106,7 +121,10 @@ export default function useCards() {
     try {
       setLoading(true);
       const cards = await getCards();
-      const favCards = cards.filter((card) => card.likes.includes(user.id));
+
+      const favCards = cards.filter((card) => {
+        return card.likes.includes(user.id);
+      });
       requestStatus(false, null, favCards);
     } catch (error) {
       requestStatus(false, error, null);
@@ -130,8 +148,8 @@ export default function useCards() {
   }, []);
 
   const value = useMemo(() => {
-    return { isLoading, cards, card, error };
-  }, [isLoading, cards, card, error]);
+    return { isLoading, cards, card, error, filterCards };
+  }, [isLoading, cards, card, error, filterCards]);
 
   return {
     value,

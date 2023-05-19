@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { string } from "prop-types";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
+import ROUTES from "../routes/routesModel";
+import useCards from "../cards/hooks/useCards";
 
 const Error = ({ errorMessage }) => {
+  console.log(errorMessage);
+  const handleLinkClick = () => {
+    window.location.reload();
+  };
   return (
     <Container>
       <Grid container spacing={2}>
@@ -12,6 +19,9 @@ const Error = ({ errorMessage }) => {
           <Typography variant="h5" color="initial">
             Oops... something went wrong: {errorMessage}
           </Typography>
+          <Link to={ROUTES.ROOT} onClick={handleLinkClick}>
+            click here to return to the home page
+          </Link>
         </Grid>
         <Grid item xs={12} md={4} justifyContent="center">
           <img

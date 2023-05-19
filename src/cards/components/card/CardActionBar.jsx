@@ -6,12 +6,11 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import CallIcon from "@mui/icons-material/Call";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { array, func, string } from "prop-types";
-
-import { useUser } from "../../../user/providers/UseProvider";
 import CardDeleteDialog from "./CardDeleteDialog";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../../routes/routesModel";
 import useCards from "../../hooks/useCards";
+import { useUser } from "../../../user/providers/UseProvider";
 
 export default function CardActionBar({
   handleDelete,
@@ -30,9 +29,14 @@ export default function CardActionBar({
     handleDelete(id);
     setDialog(false);
   };
-  const [isLiked, setLiked] = useState(() =>
-    likes?.includes(user.id) ? true : false,
-  );
+
+  const [isLiked, setLiked] = useState(() => {
+    if (user) {
+      return likes?.includes(user.id) ? true : false;
+    } else {
+      return false;
+    }
+  });
 
   const handleLike = async () => {
     setLiked((prev) => !prev);
