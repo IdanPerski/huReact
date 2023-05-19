@@ -33,9 +33,7 @@ const useUsers = () => {
 
   const handleLogin = useCallback(async (user) => {
     try {
-      console.log(user, 35);
       const token = await login(user);
-      console.log("awaitimg...");
       setTokenInLocalStorage(token);
       setToken(token);
       const userFromLocalStorage = getUser();
@@ -68,12 +66,10 @@ const useUsers = () => {
     [requestStatus, handleLogin],
   );
 
-  //handleUpdateCard
   const handleUpdateUser = useCallback(
     async (user) => {
       console.log("handleUpdateUser", user);
       try {
-        // console.log("try");
         setLoading(true);
         const userNormalize = normalizeUser(user);
         await editUser(user, userNormalize);
