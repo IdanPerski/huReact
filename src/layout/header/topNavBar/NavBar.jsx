@@ -14,7 +14,6 @@ export default function NavBar() {
         <Toolbar
           sx={{
             justifyContent: "space-between",
-            color: isDark ? "white" : "black",
           }}
         >
           <LeftNavBar sx={{ color: isDark ? "white" : "black" }} />

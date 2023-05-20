@@ -6,6 +6,7 @@ import FormButton from "./FormButton";
 import { useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import LoopIcon from "@mui/icons-material/Loop";
+import { useTheme } from "../../providers/ThemeProvider";
 const Form = ({
   title,
   onSubmit,
@@ -18,6 +19,10 @@ const Form = ({
   children,
 }) => {
   const navigate = useNavigate();
+  const { isDark } = useTheme();
+  const titleStyle = {
+    color: isDark ? "#fff" : "inherit",
+  };
 
   return (
     <Box
@@ -28,7 +33,13 @@ const Form = ({
       autoComplete="off"
       noValidate
     >
-      <Typography align="center" variant="h5" component="h1" mb={2}>
+      <Typography
+        align="center"
+        variant="h5"
+        component="h1"
+        mb={2}
+        sx={titleStyle}
+      >
         {title.toUpperCase()}
       </Typography>
 

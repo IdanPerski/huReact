@@ -9,7 +9,7 @@ import { useTheme } from "../../../../providers/ThemeProvider";
 
 export default function LeftNavBar() {
   const { user } = useUser();
-  const { isDark } = useTheme;
+
   const isMedium = useMediaQuery((theme) => theme.breakpoints.up("md"));
 
   return (
@@ -18,14 +18,13 @@ export default function LeftNavBar() {
         sx={{
           display: "inline-flex",
           alignItems: "center",
-          color: isDark ? "white" : "black",
         }}
       >
         <LogoIcon />
         {isMedium && <Logo />}
 
         {isMedium && (
-          <Box sx={{ display: "flex", color: isDark ? "white" : "black" }}>
+          <Box sx={{ display: "flex" }}>
             <NavItem to={ROUTES.CARDS} label="Cards" />
             <NavItem to={ROUTES.ABOUT} label="About" />
             {user && <NavItem to={ROUTES.FAV_CARDS} label="Favorite cards" />}
