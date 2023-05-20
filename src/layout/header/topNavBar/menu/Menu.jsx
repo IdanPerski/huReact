@@ -40,6 +40,7 @@ const Menu = ({ isOpen, anchorEl, onClose }) => {
 
         {!user && (
           <>
+            <MenuLink />
             <MenuLink
               text="login"
               navigateTo={ROUTES.LOGIN}

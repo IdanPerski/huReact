@@ -5,14 +5,35 @@ import ROUTES from "../../../../../routes/routesModel";
 import { useUser } from "../../../../../user/providers/UseProvider";
 import useUsers from "../../../../../user/hooks/useUsers";
 import MenuLink from "../../../../../routes/components/MenuLink";
-import { useMediaQuery } from "@mui/material";
+import { Divider, useMediaQuery } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { getUsersFromServer } from "../../../../../user/services/usersApiService";
+import { useEffect, useState } from "react";
 
 const Menu = ({ isOpen, anchorEl, onClose }) => {
   const { user } = useUser();
+
   const navigate = useNavigate();
 
   const { handleLogout } = useUsers();
+
+  const [userName, setUserName] = useState("guest");
+  const setName = async (userId) => {
+    try {
+      const { name } = await getUsersFromServer(userId);
+      if (userId) {
+        setUserName(`${name.first} ${name.last}`);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (user) {
+      setName(user.id);
+    }
+  }, [user]);
 
   const onLogout = () => {
     handleLogout();
@@ -21,8 +42,6 @@ const Menu = ({ isOpen, anchorEl, onClose }) => {
   };
 
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("md"));
-  // const isMedium = useMediaQuery((theme) => theme.breakpoints.up("lg"));
-  // const isLarge = useMediaQuery((theme) => theme.breakpoints.up("lg"));
 
   return (
     <MuiMenu
@@ -40,6 +59,8 @@ const Menu = ({ isOpen, anchorEl, onClose }) => {
       }}
     >
       <Box>
+        <MenuItem sx={{ display: { xs: "block" } }}>Hello {userName}!</MenuItem>
+        <Divider />
         <MenuLink
           text="about"
           navigateTo={ROUTES.ABOUT}
