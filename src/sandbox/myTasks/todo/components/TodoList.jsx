@@ -1,5 +1,5 @@
-import { TextField, Button, List, Box } from "@mui/material";
-import { width } from "@mui/system";
+import { TextField, Button, Box } from "@mui/material";
+
 import React from "react";
 import TodoItem from "./TodoItem";
 

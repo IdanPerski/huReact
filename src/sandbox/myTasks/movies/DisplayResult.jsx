@@ -7,7 +7,7 @@ import {
   Paper,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import DisplayMovie from "./DisplayMovie";
 
 export default function DisplayResult({ result, key }) {
@@ -20,11 +20,8 @@ export default function DisplayResult({ result, key }) {
     setSelectedMovie(selectedMovie);
   };
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading] = useState(false);
 
-  const handleSearchClick = () => {
-    setIsLoading(true);
-  };
   return (
     <>
       <Paper>

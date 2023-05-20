@@ -43,7 +43,7 @@ export default function UserProfile() {
   useEffect(() => {
     const user = getUserData();
     rest.setData(user);
-  }, []);
+  });
 
   const { data } = value;
 

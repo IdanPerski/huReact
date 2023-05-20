@@ -11,7 +11,6 @@ import ROUTES from "../../routes/routesModel";
 import { useUser } from "../providers/UseProvider";
 import useAxios from "../../hooks/useAxios";
 import normalizeUser from "../helpers/normalization/normalizeUser";
-import { editCard } from "../../cards/services/cardApiService";
 
 const useUsers = () => {
   const [isLoading, setLoading] = useState(true);
@@ -80,7 +79,7 @@ const useUsers = () => {
         console.log(error);
       }
     },
-    [requestStatus, handleLogin],
+    [requestStatus],
   );
   /*
  

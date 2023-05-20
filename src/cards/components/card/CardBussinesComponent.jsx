@@ -1,6 +1,6 @@
 import { Card, CardActionArea } from "@mui/material";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import CardHead from "./CardHead";
 import CardBody from "./CardBody";
 import CardActionBar from "./CardActionBar";
@@ -8,8 +8,6 @@ import cardType from "../../models/types/cardType";
 import { func } from "prop-types";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../../routes/routesModel";
-import useCards from "../../hooks/useCards";
-import { getUser } from "../../../user/services/localStorageService";
 
 export default function CardBussinesComponent({
   card,

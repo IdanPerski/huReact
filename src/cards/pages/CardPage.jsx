@@ -1,12 +1,10 @@
-import { Container, Typography } from "@mui/material";
-import React, { useCallback, useContext, useEffect } from "react";
+import { Container } from "@mui/material";
+import React, { useEffect } from "react";
 import PageHeader from "../../components/PageHeader";
 import useCards from "../hooks/useCards";
 import CardsFeedback from "../components/CardsFeedback";
-// import { SearchContext } from "../../providers/SearchProvider";
 
 export default function CardPage() {
-  // const { search, renderNoResult } = useContext(SearchContext);
   const {
     value: { cards, error, isLoading, filterCards },
     handleGetCards,

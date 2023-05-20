@@ -1,18 +1,18 @@
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import { IconButton, useMediaQuery } from "@mui/material";
-import React, { useState } from "react";
+
 import { useTheme } from "../../../../providers/ThemeProvider";
 import { Box } from "@mui/system";
 import NotLogged from "./NotLogged";
 import Logged from "./Logged";
 import { useUser } from "../../../../user/providers/UseProvider";
 import MoreButton from "./MoreButton";
-import MySearchBar from "./MySearchBar";
+
 import SearchBar from "./SearchBar";
 
 export default function RightNavBar() {
-  const isMedium = useMediaQuery((theme) => theme.breakpoints.down("lg"));
+  // const isMedium = useMediaQuery((theme) => theme.breakpoints.down("lg"));
   // const [searchQuery, setSearchQuery] = useState("");
   const { isDark, toggleDarkMode } = useTheme();
   const { user } = useUser();
