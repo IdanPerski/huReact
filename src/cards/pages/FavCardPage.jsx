@@ -13,49 +13,41 @@ export default function FavCardPage() {
     value: { cards, error, isLoading, filterCards },
     handleGetFavCards,
     handleDeleteCard,
-    handleLikeCard,
   } = useCards();
-
-  useEffect(() => {
-    handleGetFavCards();
-  }, []);
-
-  const handleDelete = async (id) => {
-    await handleDeleteCard(id);
-    handleGetFavCards();
-  };
 
   const [showSpinner, setShowSpinner] = useState(true);
 
+  const handleDelete = async (id) => {
+    await handleDeleteCard(id);
+    await handleGetFavCards();
+  };
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setShowSpinner(false);
-    }, 800);
-
-    return () => {
-      clearTimeout(timeout);
-    };
+    handleGetFavCards();
+    setShowSpinner(false);
   }, []);
+
+  if (showSpinner) {
+    return <Spinner />;
+  }
+
+  if (cards == null) {
+    return <Typography variant="h5">Can't find cards!</Typography>;
+  }
 
   return (
     <div>
-      <Container sx={{ mt: 2 }}>
+      <Container>
         <PageHeader
           title="Favorite Cards"
           subtitle="On this page, you can find all the business's favorite cards from all categories"
         />
-        {showSpinner ? (
-          <Spinner />
-        ) : cards == null || filterCards == null ? (
-          <Typography variant="h5">Can't find cards!</Typography>
-        ) : (
-          <CardsFeedback
-            isLoading={isLoading}
-            error={error}
-            cards={filterCards || cards}
-            handleDelete={handleDelete}
-          />
-        )}
+
+        <CardsFeedback
+          isLoading={isLoading}
+          error={error}
+          cards={filterCards || cards}
+          handleDelete={handleDelete}
+        />
       </Container>
     </div>
   );
