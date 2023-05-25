@@ -3,16 +3,12 @@ import React from "react";
 import cardType from "../models/types/cardType";
 import CardBussinesComponent from "./card/CardBussinesComponent";
 import { arrayOf } from "prop-types";
+import { useUser } from "../../user/providers/UseProvider";
 
 export default function Cards({ cards, handleDelete, onLike }) {
   const handleEdit = (id) => {
     console.log(`Card ${id} is Edited`);
   };
-
-  // const handleLike = (id) => {
-  //   console.log(`Card ${id} is Liked`);
-  // };
-
   return (
     <>
       <Grid container spacing={2}>
@@ -23,7 +19,6 @@ export default function Cards({ cards, handleDelete, onLike }) {
               key={card._id}
               handleDelete={handleDelete}
               handleEdit={handleEdit}
-              // handleLike={handleLike}
               onLike={onLike}
             />
           </Grid>

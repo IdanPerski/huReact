@@ -8,14 +8,15 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PageHeader from "../../components/PageHeader";
 import useCards from "../hooks/useCards";
-import Map from "../../components/Map";
-import MapSandbox from "../.././sandbox/map/MapSandbox";
+import { map } from "leaflet";
+import BuisnessMap from "../components/card/BuisnessMap";
 
 export default function CardDetailsPage() {
+  const [mapAddress, setAddress] = useState("");
   const { id } = useParams();
   const {
     handleGetCard,
@@ -25,7 +26,16 @@ export default function CardDetailsPage() {
   const fetchData = async () => {
     try {
       await handleGetCard(id);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getAddress = () => {
+    if (card) {
+      const { address } = card;
+      setAddress(` ${address.city} ${address.street} ${address.houseNumber} `);
+    }
   };
 
   useEffect(() => {
@@ -34,23 +44,21 @@ export default function CardDetailsPage() {
 
   const [cardDetails, setCardDetails] = useState(card);
 
-  const address = () => {
-    if (card) {
-      const address = card.address;
-      return address;
-    }
-  };
-
   const capitalizeFirstLetter = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
 
   useEffect(() => {
-    const displayCardDetails = (obj) => {
-      const convertedObj = Object.entries(obj);
+    const displayCardDetails = (card) => {
+      const convertedObj = Object.entries(card);
       const slicedArray = convertedObj.slice(1, 7);
       const backToObj = Object.fromEntries(slicedArray);
       setCardDetails((prev) => ({ ...prev, ...backToObj }));
+      getAddress();
+      // const { address } = card;
+      // setAddress(
+      //   `${address.street} ${address.houseNumber} ${address.city} , ${address.country}`,
+      // );
     };
 
     if (card) displayCardDetails(card);
@@ -58,7 +66,7 @@ export default function CardDetailsPage() {
 
   return (
     <Container>
-      <PageHeader title="Card details" subtitle="this is subtitle" />
+      <PageHeader title="Card details" subtitle="" />
       {/* <Typography>Details about card : {id}</Typography> */}
       <Card
         sx={{
@@ -79,7 +87,6 @@ export default function CardDetailsPage() {
                   width: "12rem",
                   display: "flex",
                   alignItems: "center",
-
                   fontSize: "3.5rem",
                 }}
                 src={`/${card?.image.url}`}
@@ -101,31 +108,21 @@ export default function CardDetailsPage() {
 
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            maxHeight: "43vh",
-            maxWidth: "43vw",
+            height: "45vh",
+            width: "40%",
+            m: 3,
             marginX: "auto",
-            mt: 2,
-            mb: 4,
-            overflow: "hidden",
+            zIndex: "0",
           }}
         >
           {card ? (
-            <Map
-              country={address().country}
-              address={`${address().city} ${address().street} ${
-                address().houseNumber
-              }`}
-
-              // address={`${address().country},${address().city},${
-              //   address().street
-              // },${address().houseNumber}`}
-            />
+            <BuisnessMap address={mapAddress} zoom={14} />
           ) : (
+            /* "Tel Aviv Hashalom 2" */
+
             <Typography>loading...</Typography>
           )}
+          {console.log(mapAddress)}
         </Box>
       </Card>
     </Container>

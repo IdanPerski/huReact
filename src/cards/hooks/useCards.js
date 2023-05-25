@@ -13,6 +13,7 @@ import {
   getMyCards,
 } from "../services/cardApiService";
 import { useSearchParams } from "react-router-dom";
+import { getUser } from "../../user/services/localStorageService";
 export default function useCards() {
   const [cards, setCards] = useState([]);
   const [isLoading, setLoading] = useState(false);
@@ -121,10 +122,9 @@ export default function useCards() {
     try {
       setLoading(true);
       const cards = await getCards();
-
-      const favCards = cards.filter((card) => {
-        return card.likes.includes(user.id);
-      });
+      const user = await getUser();
+      const favCards = cards.filter((card) => card.likes.includes(user.id));
+      console.log(favCards);
       requestStatus(false, null, favCards);
     } catch (error) {
       requestStatus(false, error, null);
@@ -136,6 +136,7 @@ export default function useCards() {
     try {
       const card = await changeLikeStatus(cardId);
       const { updatedCard, LikesBeforeUpdate, LikesAfterUpdate } = card;
+      await handleGetFavCards();
       requestStatus(false, null, cards, updatedCard);
       if (LikesBeforeUpdate < LikesAfterUpdate) {
         snack("success", "The business card has been Liked");

@@ -2,7 +2,7 @@ import { node } from "prop-types";
 import React from "react";
 import Footer from "./footer/Footer";
 import Header from "./header/Header";
-import { MenuProvider } from "./header/topNavBar/menu class/menu/MenuProvider";
+// import { MenuProvider } from "./header/topNavBar/menu class/menu/MenuProvider";
 
 import Main from "./main/Main";
 
