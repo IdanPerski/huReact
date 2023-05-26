@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography } from "@mui/material";
+import { AppBar, Toolbar } from "@mui/material";
 import React from "react";
 import LeftNavBar from "./left-navigation/LeftNavBar";
 import { MenuProvider } from "./menu class/menu/MenuProvider";

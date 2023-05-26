@@ -12,7 +12,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PageHeader from "../../components/PageHeader";
 import useCards from "../hooks/useCards";
-import { map } from "leaflet";
 import BuisnessMap from "../components/card/BuisnessMap";
 
 export default function CardDetailsPage() {
@@ -122,7 +121,6 @@ export default function CardDetailsPage() {
 
             <Typography>loading...</Typography>
           )}
-          {console.log(mapAddress)}
         </Box>
       </Card>
     </Container>

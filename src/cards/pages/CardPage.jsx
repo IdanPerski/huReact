@@ -6,7 +6,7 @@ import CardsFeedback from "../components/CardsFeedback";
 
 export default function CardPage() {
   const {
-    value: { cards, error, isLoading, filterCards },
+    value: { error, isLoading, filterCards },
     handleGetCards,
     handleDeleteCard,
   } = useCards();

@@ -1,5 +1,5 @@
 import { Box, Card, Grid, Tab, Tabs } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import PageHeader from "../../components/PageHeader";
 import useForm from "../../forms/hooks/useForm";
 import PersonalDetails from "../components/PersonalDetails";
@@ -14,15 +14,22 @@ import initialEditForm from "../helpers/initialForms/initialEditForm";
 import editsUerSchema from "../models/joi-schema/editsUerSchema";
 import useUsers from "../hooks/useUsers";
 import DisplayUserDetails from "../components/DisplayUserDetails";
+import { useMediaQuery } from "@mui/material";
 
 export default function UserProfile() {
   const { user } = useUser();
   const { handleUpdateUser } = useUsers();
   const [tabValue, setTabValue] = useState(0);
-
+  const isMobileView = useMediaQuery("(max-width: 665px)");
   const handleTabChange = (e) => {
     setTabValue(e.target.tabIndex);
   };
+
+  // useEffect(() => {
+
+  //   if (isMobileView) setTabValue(100);
+
+  // }, [isMobileView]);
 
   const { value, ...rest } = useForm(
     initialEditForm,
@@ -53,11 +60,20 @@ export default function UserProfile() {
       <PageHeader title="Profile page" subtitle="profile" />
       <Box display="flex" sx={{ width: "90%", margin: "0 auto", p: 2 }}>
         <Grid container alignItems="stretch" spacing={2}>
-          <Grid item xs={12} sm={4} sx={{ height: "100%" }}>
+          <Grid
+            item
+            sm={4}
+            md={4}
+            sx={{
+              height: isMobileView ? "25vh" : "100%",
+              width: isMobileView ? "100%" : null,
+              display: isMobileView ? "none" : null,
+            }}
+          >
             <DisplayUserDetails displayData={data} />
           </Grid>
 
-          <Grid item xs={12} sm={8}>
+          <Grid item xs={12} sm={isMobileView ? 12 : 8} md={8}>
             <Card sx={{ height: "100%" }}>
               <Tabs
                 value={tabValue}
@@ -70,6 +86,31 @@ export default function UserProfile() {
                 <Tab tabIndex={2} label="Contact" />
               </Tabs>
 
+              {tabValue === 100 ? (
+                <Box sx={{ p: 4 }}>
+                  <Grid
+                    container
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      height: "100%",
+                    }}
+                  >
+                    {
+                      <PersonalDetails
+                        onSubmit={rest.onSubmit}
+                        onReset={rest.handleReset}
+                        onFormChange={rest.validateForm}
+                        title={"Edit profile"}
+                        errors={value.errors}
+                        onInputChange={rest.handleChange}
+                        setData={rest.setData}
+                        data={value.data}
+                      />
+                    }
+                  </Grid>
+                </Box>
+              ) : null}
               {tabValue === 0 ? (
                 <Box sx={{ p: 4 }}>
                   <Grid

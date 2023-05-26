@@ -2,7 +2,6 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useSnack } from "../../providers/SnackBarProvider";
 
 import useAxios from "../../hooks/useAxios";
-import { useUser } from "../../user/providers/UseProvider";
 import {
   changeLikeStatus,
   createCard,
@@ -20,7 +19,6 @@ export default function useCards() {
   const [error, setError] = useState(null);
   const snack = useSnack();
   const [card, setCard] = useState(null);
-  const { user } = useUser();
   const [query, setQuery] = useState("");
   const [searchParams] = useSearchParams();
   const [filterCards, setFilter] = useState();
@@ -124,7 +122,6 @@ export default function useCards() {
       const cards = await getCards();
       const user = await getUser();
       const favCards = cards.filter((card) => card.likes.includes(user.id));
-      console.log(favCards);
       requestStatus(false, null, favCards);
     } catch (error) {
       requestStatus(false, error, null);

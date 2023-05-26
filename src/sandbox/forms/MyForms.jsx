@@ -18,7 +18,7 @@ export default function MyForms() {
   // const userSchema = Joi.object(schema);
 
   const [data, setData] = useState(initialForm);
-  const [errors, setErrors] = useState({});
+  const [, setErrors] = useState({});
   /*   const { error } = userSchema.validate(data); */
 
   const handleChange = (e) => {

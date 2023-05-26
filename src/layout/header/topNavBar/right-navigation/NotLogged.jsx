@@ -1,5 +1,5 @@
-import { Box, IconButton, Tooltip, useMediaQuery } from "@mui/material";
-import React, { useState } from "react";
+import { Box, IconButton, Tooltip } from "@mui/material";
+import React from "react";
 import ROUTES from "../../../../routes/routesModel";
 import LoginIcon from "@mui/icons-material/Login";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";

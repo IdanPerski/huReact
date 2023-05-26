@@ -1,6 +1,6 @@
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
-import { IconButton, useMediaQuery } from "@mui/material";
+import { IconButton } from "@mui/material";
 
 import { useTheme } from "../../../../providers/ThemeProvider";
 import { Box } from "@mui/system";

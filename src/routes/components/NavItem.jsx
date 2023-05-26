@@ -1,5 +1,5 @@
 import { Button, Typography } from "@mui/material";
-import { node, object, string } from "prop-types";
+import { object, string } from "prop-types";
 import React, { useEffect, useState } from "react";
 import NavBarLink from "./NavBarLink";
 import { useTheme } from "../../providers/ThemeProvider";

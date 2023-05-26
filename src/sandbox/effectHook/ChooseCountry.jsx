@@ -3,7 +3,7 @@ import Container from "@mui/material/Container";
 import { Select, MenuItem, InputLabel, FormControl } from "@mui/material";
 import Country from "./Country";
 import { Box } from "@mui/system";
-import Country2 from "./Country2";
+// import Country2 from "./Country2";
 
 export default function ChooseCountry() {
   const [selectedCountry, setSelectedCountry] = useState("");

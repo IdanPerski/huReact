@@ -10,7 +10,6 @@ import mapCardToModel from "../helpers/normalization/mapToModel";
 import ROUTES from "../../routes/routesModel";
 import CardForm from "../components/card/CardForm";
 import normalizeCard from "../helpers/normalization/normalizeCard";
-import { useMediaQuery } from "@mui/material";
 
 export default function EditCardPage() {
   //id of the card - useParams
@@ -37,10 +36,7 @@ export default function EditCardPage() {
       const modelCard = mapCardToModel(data);
       rest.setData(modelCard);
     });
-  }, []);
-
-  const isSmall = useMediaQuery("sm");
-
+  });
   if (!user) return <Navigate replace to={ROUTES.CARDS} />;
   return (
     <div>

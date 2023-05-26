@@ -5,7 +5,6 @@ import Logo from "../logo/Logo";
 import LogoIcon from "../logo/LogoIcon";
 import { useUser } from "../../../../user/providers/UseProvider";
 import { Box, useMediaQuery } from "@mui/material";
-import { useTheme } from "../../../../providers/ThemeProvider";
 
 export default function LeftNavBar() {
   const { user } = useUser();
