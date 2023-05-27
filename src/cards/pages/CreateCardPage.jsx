@@ -26,7 +26,7 @@ export default function CreateCardPage() {
   });
 
   return (
-    <div>
+    <>
       <Container>
         <CardForm
           title={"Create Card"}
@@ -38,6 +38,6 @@ export default function CreateCardPage() {
           data={value.data}
         />
       </Container>
-    </div>
+    </>
   );
 }

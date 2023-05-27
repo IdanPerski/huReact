@@ -35,13 +35,6 @@ export default function AboutPage() {
           <List>
             <ListItem>
               <Typography variant="body1" component="span">
-                Easy-to-use design editor: Our app offers a drag-and-drop
-                interface, allowing you to easily arrange and customize the
-                elements of your business card design.
-              </Typography>
-            </ListItem>
-            <ListItem>
-              <Typography variant="body1" component="span">
                 Professional templates: Choose from a wide selection of
                 professionally designed templates, tailored to various
                 industries and styles. You can customize the templates to match

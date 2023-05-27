@@ -29,7 +29,7 @@ export default function MyCards() {
 
   return (
     <div>
-      <Container sx={{ mt: 2 }}>
+      <Container>
         <PageHeader
           title="Cards"
           subtitle="On this page you can find all bussines cards from all categories"
