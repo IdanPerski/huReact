@@ -12,7 +12,7 @@ export default function AboutPage() {
         title="About Page"
         subtitle="On this page you can find explanations about using the application"
       />
-      <Grid container spacing={2}>
+      <Grid container spacing={5}>
         <Grid item xs={12} md={7} alignSelf="center">
           <Typography variant="h4" gutterBottom>
             About Our Business Cards App
@@ -60,7 +60,10 @@ export default function AboutPage() {
         <Grid
           item
           md={5}
-          sx={{ display: { md: "flex", xs: "none" }, justifyContent: "center" }}
+          sx={{
+            display: { md: "block", xs: "none" },
+            justifyContent: "center",
+          }}
         >
           <img src="/assets/images/card.jpg" alt="card" width="100%" />
         </Grid>
