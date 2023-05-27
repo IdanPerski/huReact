@@ -23,10 +23,10 @@ const cards = [
     },
     address: {
       state: "TLV",
-      country: "Israerl",
-      street: "Dizingof",
-      houseNumber: 1,
-      city: "Tel Aviv",
+      country: "Israel",
+      street: "Gefen",
+      houseNumber: 3,
+      city: "Ramat Gan",
       zip: 1312,
     },
     bizNumber: 1111111,
@@ -48,7 +48,7 @@ const cards = [
     address: {
       state: "TLV",
       country: "Israerl",
-      street: "Dizingof",
+      street: "Dizengoff ",
       houseNumber: 2,
       city: "Tel Aviv",
       zip: 1312,
@@ -72,7 +72,7 @@ const cards = [
     address: {
       state: "TLV",
       country: "Israerl",
-      street: "Dizingof",
+      street: "Hashalom ",
       houseNumber: 3,
       city: "Tel Aviv",
       zip: 1312,
@@ -86,18 +86,18 @@ const cards = [
 const users = [
   {
     name: {
-      first: "Tzach",
+      first: "Idan",
       middle: "",
-      last: "Dabush",
+      last: "Perski",
     },
     phone: "055-5555555",
     email: "admin@admin.com",
     password: "Abc123!",
     address: {
-      state: "Haifa",
+      state: "Tel Aviv",
       country: "Israel",
-      city: "Haifa",
-      street: "HaNasi",
+      city: "Ramat-Gan",
+      street: "Herut",
       zip: 123456,
       houseNumber: 12,
     },
@@ -111,9 +111,9 @@ const users = [
   },
   {
     name: {
-      first: "Tzach1",
+      first: "Avi",
       middle: "",
-      last: "Dabush1",
+      last: "Kavi",
     },
     phone: "055-5555555",
     email: "admin1@admin.com",
@@ -122,7 +122,7 @@ const users = [
       state: "Haifa",
       country: "Israel",
       city: "Haifa",
-      street: "HaNasi",
+      street: "Hanasi",
       zip: 123456,
       houseNumber: 12,
     },
@@ -332,6 +332,8 @@ app.put("/users/:user", (req, res) => {
     res.status(404).send("login first");
   }
 });
+
+console.log(users);
 
 const PORT = 8181;
 app.listen(PORT, () => console.log(`server listening on port ${PORT}`));
