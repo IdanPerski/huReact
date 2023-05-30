@@ -190,7 +190,7 @@ app.post("/cards", (req, res) => {
   // Add the new card to the cards array
   cards.push(newCardWithId);
   // Send the new card object back to the client
-  console.log(newCardWithId, 111111111111111111111111111111111111);
+  console.log(newCardWithId);
   res.json(newCardWithId);
 });
 
