@@ -37,7 +37,6 @@ export default function DisplayUserDetails({ displayData }) {
 
           <List sx={{ textAlign: "center" }}>
             {Object.entries(displayData).map(([key, value]) => {
-              console.log(key);
               if (key !== "password")
                 return (
                   <ListItemText key={key} primary={key} secondary={value} />
