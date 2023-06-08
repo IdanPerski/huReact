@@ -6,8 +6,6 @@ import ThemeProvider from "./providers/ThemeProvider";
 import Router from "./routes/Router";
 import UserProvider from "./user/providers/UseProvider";
 import SnackbarProvider from "./providers/SnackBarProvider";
-// import SearchProvider from "./providers/SearchProvider";
-// import AuthorizationProvider from "./user/providers/AuthorizationProvider";
 
 function App() {
   return (

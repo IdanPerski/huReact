@@ -44,7 +44,10 @@ export default function CardDetailsPage() {
   const [cardDetails, setCardDetails] = useState(card);
 
   const capitalizeFirstLetter = (str) => {
-    return str.charAt(0).toUpperCase() + str.slice(1);
+    console.log(typeof str);
+    if (typeof str === "string") {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
   };
 
   useEffect(() => {

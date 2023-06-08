@@ -13,7 +13,7 @@ const CardForm = ({
   title,
 }) => {
   return (
-    <Form
+    <Form 
       onSubmit={onSubmit}
       onReset={onReset}
       errors={errors}
